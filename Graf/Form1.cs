@@ -1,6 +1,5 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +8,6 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -52,7 +49,7 @@ namespace Graf
 
         private void exportButton_Click_1(object sender, EventArgs e)
         {
-            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "JPEG Image|*.jpg";
             saveFileDialog.Title = "Save an Image File";
 
@@ -80,7 +77,7 @@ namespace Graf
 
             foreach (var year in years)
             {
-                List<Double> values = new List<Double>();
+                List<double> values = new List<double>();
                 for (int month = 1; month <= 12; month++)
                 {
                     double value = 0;
@@ -99,7 +96,7 @@ namespace Graf
 
         private void importCSV_Click_1(object sender, EventArgs e)
         {
-            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV File|*.csv";
             openFileDialog.Title = "Open CSV File";
 
@@ -107,30 +104,31 @@ namespace Graf
             {
                 try
                 {
-                    dataTable = new DataTable();
-
-                    dataTable.Columns.Add("Year", typeof(string));
-                    dataTable.Columns.Add("Month", typeof(string));
-                    dataTable.Columns.Add("Value", typeof(double));
+                    List<Revenue> revenueData = new List<Revenue>(); // Create a list to hold the imported data
 
                     using (var reader = new StreamReader(openFileDialog.FileName))
                     {
-                        reader.ReadLine();
+                        reader.ReadLine(); // Skip headers
 
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
                             var values = line.Split(',');
 
-                            string year = values[0];
+                            int year = int.Parse(values[0]);
                             string monthName = values[1];
                             double value = double.Parse(values[2]);
 
-                            dataTable.Rows.Add(year, monthName, value);
+                            int month = GetMonthNumber(monthName); // Convert month name to corresponding integer value
+
+                            revenueData.Add(new Revenue { Year = year, Month = month, Value = value }); // Add data to the list
                         }
                     }
 
-                    dataGridView1.DataSource = dataTable;
+                    revenueBindingSource.DataSource = revenueData; // Update the data source with the imported data
+                    dataGridView1.DataSource = revenueBindingSource; // Bind the data source to the DataGridView
+
+                    UpdateGraph(); // Update the graph with the new data
                 }
                 catch (Exception ex)
                 {
@@ -139,9 +137,15 @@ namespace Graf
             }
         }
 
+        private int GetMonthNumber(string monthName)
+        {
+            DateTimeFormatInfo dtInfo = new DateTimeFormatInfo();
+            return dtInfo.MonthNames.ToList().IndexOf(monthName) + 1;
+        }
+
         private void exportCSV_Click_1(object sender, EventArgs e)
         {
-            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "CSV File|*.csv";
             saveFileDialog.Title = "Save CSV File";
 
@@ -157,7 +161,7 @@ namespace Graf
                         string year = series.Title;
                         for (int month = 0; month < series.Values.Count; month++)
                         {
-                            string monthName = GetMonthName(month + 1);
+                            string monthName = GetMonthName(month + 1); // Get month name based on its number
                             double value = (double)series.Values[month];
                             writer.WriteLine($"{year},{monthName},{value}");
                         }

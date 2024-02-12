@@ -71,10 +71,10 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(935, 511);
+            this.loadButton.Location = new System.Drawing.Point(919, 485);
             this.loadButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(100, 28);
+            this.loadButton.Size = new System.Drawing.Size(135, 38);
             this.loadButton.TabIndex = 3;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
@@ -82,10 +82,10 @@
             // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(935, 464);
+            this.exportButton.Location = new System.Drawing.Point(919, 439);
             this.exportButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(100, 28);
+            this.exportButton.Size = new System.Drawing.Size(135, 38);
             this.exportButton.TabIndex = 5;
             this.exportButton.Text = "Export JPG";
             this.exportButton.UseVisualStyleBackColor = true;
@@ -93,10 +93,10 @@
             // 
             // exportCSV
             // 
-            this.exportCSV.Location = new System.Drawing.Point(935, 410);
+            this.exportCSV.Location = new System.Drawing.Point(919, 395);
             this.exportCSV.Margin = new System.Windows.Forms.Padding(4);
             this.exportCSV.Name = "exportCSV";
-            this.exportCSV.Size = new System.Drawing.Size(100, 28);
+            this.exportCSV.Size = new System.Drawing.Size(135, 36);
             this.exportCSV.TabIndex = 7;
             this.exportCSV.Text = "Export CSV";
             this.exportCSV.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // 
             // importCSV
             // 
-            this.importCSV.Location = new System.Drawing.Point(935, 360);
+            this.importCSV.Location = new System.Drawing.Point(919, 347);
             this.importCSV.Margin = new System.Windows.Forms.Padding(4);
             this.importCSV.Name = "importCSV";
-            this.importCSV.Size = new System.Drawing.Size(100, 28);
+            this.importCSV.Size = new System.Drawing.Size(135, 40);
             this.importCSV.TabIndex = 8;
             this.importCSV.Text = "Import CSV";
             this.importCSV.UseVisualStyleBackColor = true;
