@@ -104,7 +104,7 @@ namespace Graf
             {
                 try
                 {
-                    List<Revenue> revenueData = new List<Revenue>(); // Create a list to hold the imported data
+                    List<Revenue> revenueData = new List<Revenue>(); 
 
                     using (var reader = new StreamReader(openFileDialog.FileName))
                     {
@@ -119,16 +119,16 @@ namespace Graf
                             string monthName = values[1];
                             double value = double.Parse(values[2]);
 
-                            int month = GetMonthNumber(monthName); // Convert month name to corresponding integer value
+                            int month = GetMonthNumber(monthName); 
 
-                            revenueData.Add(new Revenue { Year = year, Month = month, Value = value }); // Add data to the list
+                            revenueData.Add(new Revenue { Year = year, Month = month, Value = value }); 
                         }
                     }
 
-                    revenueBindingSource.DataSource = revenueData; // Update the data source with the imported data
-                    dataGridView1.DataSource = revenueBindingSource; // Bind the data source to the DataGridView
+                    revenueBindingSource.DataSource = revenueData; 
+                    dataGridView1.DataSource = revenueBindingSource; 
 
-                    UpdateGraph(); // Update the graph with the new data
+                    UpdateGraph(); 
                 }
                 catch (Exception ex)
                 {
@@ -161,7 +161,7 @@ namespace Graf
                         string year = series.Title;
                         for (int month = 0; month < series.Values.Count; month++)
                         {
-                            string monthName = GetMonthName(month + 1); // Get month name based on its number
+                            string monthName = GetMonthName(month + 1); 
                             double value = (double)series.Values[month];
                             writer.WriteLine($"{year},{monthName},{value}");
                         }
