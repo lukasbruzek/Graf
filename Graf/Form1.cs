@@ -21,15 +21,6 @@ namespace Graf
             InitializeComponent();
         }
 
-        private void loadButton_Click(object sender, EventArgs e)
-        {
-            if (revenueBindingSource.DataSource == null)
-            {
-                return;
-            }
-            UpdateGraph();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             revenueBindingSource.DataSource = new List<Revenue>();

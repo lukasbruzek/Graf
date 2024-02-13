@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.revenueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.loadButton = new System.Windows.Forms.Button();
             this.exportButton = new System.Windows.Forms.Button();
             this.exportCSV = new System.Windows.Forms.Button();
             this.importCSV = new System.Windows.Forms.Button();
-            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.revenueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.revenueBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -53,65 +53,12 @@
             this.valueDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.revenueBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(88, 325);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(804, 185);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged_1);
-            // 
-            // cartesianChart1
-            // 
-            this.cartesianChart1.Location = new System.Drawing.Point(71, 36);
-            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(821, 270);
-            this.cartesianChart1.TabIndex = 2;
-            this.cartesianChart1.Text = "cartesianChart1";
-            // 
-            // loadButton
-            // 
-            this.loadButton.Location = new System.Drawing.Point(919, 485);
-            this.loadButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(135, 38);
-            this.loadButton.TabIndex = 3;
-            this.loadButton.Text = "Load";
-            this.loadButton.UseVisualStyleBackColor = true;
-            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
-            // 
-            // exportButton
-            // 
-            this.exportButton.Location = new System.Drawing.Point(919, 439);
-            this.exportButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(135, 38);
-            this.exportButton.TabIndex = 5;
-            this.exportButton.Text = "Export JPG";
-            this.exportButton.UseVisualStyleBackColor = true;
-            this.exportButton.Click += new System.EventHandler(this.exportButton_Click_1);
-            // 
-            // exportCSV
-            // 
-            this.exportCSV.Location = new System.Drawing.Point(919, 395);
-            this.exportCSV.Margin = new System.Windows.Forms.Padding(4);
-            this.exportCSV.Name = "exportCSV";
-            this.exportCSV.Size = new System.Drawing.Size(135, 36);
-            this.exportCSV.TabIndex = 7;
-            this.exportCSV.Text = "Export CSV";
-            this.exportCSV.UseVisualStyleBackColor = true;
-            this.exportCSV.Click += new System.EventHandler(this.exportCSV_Click_1);
-            // 
-            // importCSV
-            // 
-            this.importCSV.Location = new System.Drawing.Point(919, 347);
-            this.importCSV.Margin = new System.Windows.Forms.Padding(4);
-            this.importCSV.Name = "importCSV";
-            this.importCSV.Size = new System.Drawing.Size(135, 40);
-            this.importCSV.TabIndex = 8;
-            this.importCSV.Text = "Import CSV";
-            this.importCSV.UseVisualStyleBackColor = true;
-            this.importCSV.Click += new System.EventHandler(this.importCSV_Click_1);
             // 
             // yearDataGridViewTextBoxColumn
             // 
@@ -141,6 +88,55 @@
             // 
             this.revenueBindingSource.DataSource = typeof(Graf.Revenue);
             // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Location = new System.Drawing.Point(71, 36);
+            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(4);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(821, 270);
+            this.cartesianChart1.TabIndex = 2;
+            this.cartesianChart1.Text = "cartesianChart1";
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(0, 0);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.TabIndex = 9;
+            // 
+            // exportButton
+            // 
+            this.exportButton.Location = new System.Drawing.Point(919, 460);
+            this.exportButton.Margin = new System.Windows.Forms.Padding(4);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(135, 38);
+            this.exportButton.TabIndex = 5;
+            this.exportButton.Text = "Export JPG";
+            this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click_1);
+            // 
+            // exportCSV
+            // 
+            this.exportCSV.Location = new System.Drawing.Point(919, 416);
+            this.exportCSV.Margin = new System.Windows.Forms.Padding(4);
+            this.exportCSV.Name = "exportCSV";
+            this.exportCSV.Size = new System.Drawing.Size(135, 36);
+            this.exportCSV.TabIndex = 7;
+            this.exportCSV.Text = "Export CSV";
+            this.exportCSV.UseVisualStyleBackColor = true;
+            this.exportCSV.Click += new System.EventHandler(this.exportCSV_Click_1);
+            // 
+            // importCSV
+            // 
+            this.importCSV.Location = new System.Drawing.Point(919, 368);
+            this.importCSV.Margin = new System.Windows.Forms.Padding(4);
+            this.importCSV.Name = "importCSV";
+            this.importCSV.Size = new System.Drawing.Size(135, 40);
+            this.importCSV.TabIndex = 8;
+            this.importCSV.Text = "Import CSV";
+            this.importCSV.UseVisualStyleBackColor = true;
+            this.importCSV.Click += new System.EventHandler(this.importCSV_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -152,7 +148,7 @@
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.cartesianChart1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
