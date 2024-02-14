@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace Graf
         {
             InitializeComponent();
             printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument_PrintPage);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace Graf
             {
                 try
                 {
-                    List<Revenue> revenueData = new List<Revenue>(); 
+                    List<Revenue> revenueData = new List<Revenue>();
 
                     using (var reader = new StreamReader(openFileDialog.FileName))
                     {
@@ -112,16 +112,16 @@ namespace Graf
                             string monthName = values[1];
                             double value = double.Parse(values[2]);
 
-                            int month = GetMonthNumber(monthName); 
+                            int month = GetMonthNumber(monthName);
 
-                            revenueData.Add(new Revenue { Year = year, Month = month, Value = value }); 
+                            revenueData.Add(new Revenue { Year = year, Month = month, Value = value });
                         }
                     }
 
-                    revenueBindingSource.DataSource = revenueData; 
-                    dataGridView1.DataSource = revenueBindingSource; 
+                    revenueBindingSource.DataSource = revenueData;
+                    dataGridView1.DataSource = revenueBindingSource;
 
-                    UpdateGraph(); 
+                    UpdateGraph();
                 }
                 catch (Exception ex)
                 {
@@ -154,7 +154,7 @@ namespace Graf
                         string year = series.Title;
                         for (int month = 0; month < series.Values.Count; month++)
                         {
-                            string monthName = GetMonthName(month + 1); 
+                            string monthName = GetMonthName(month + 1);
                             double value = (double)series.Values[month];
                             writer.WriteLine($"{year},{monthName},{value}");
                         }
@@ -174,17 +174,17 @@ namespace Graf
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-                using (Bitmap bmp = new Bitmap(cartesianChart1.Width, cartesianChart1.Height))
-                {
-                    e.PageSettings.Landscape = true;
-
-                    cartesianChart1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                    e.Graphics.DrawImage(bmp, 0, 0, 1000, bmp.Height);
+            using (Bitmap bmp = new Bitmap(cartesianChart1.Width, cartesianChart1.Height))
+            {
+                cartesianChart1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                e.Graphics.DrawImage(bmp, 0, 0, 1000, bmp.Height);
             }
+            
         }
 
         private void printButton_Click(object sender, EventArgs e)
         {
+            printDocument.DefaultPageSettings.Landscape = true;
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
             printPreviewDialog.Document = printDocument;
             printPreviewDialog.ShowDialog();
