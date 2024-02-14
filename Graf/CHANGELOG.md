@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.3
+
+- Tisk grafu
+
 ## 1.1.2
 
 - Odstranìní tlaèítka "load"

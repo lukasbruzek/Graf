@@ -15,10 +15,12 @@ namespace Graf
 {
     public partial class Form1 : Form
     {
-        private DataTable dataTable;
+        private System.Drawing.Printing.PrintDocument printDocument = new System.Drawing.Printing.PrintDocument();
         public Form1()
         {
             InitializeComponent();
+            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument_PrintPage);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -168,6 +170,24 @@ namespace Graf
                 return;
             }
             UpdateGraph();
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+                using (Bitmap bmp = new Bitmap(cartesianChart1.Width, cartesianChart1.Height))
+                {
+                    e.PageSettings.Landscape = true;
+
+                    cartesianChart1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    e.Graphics.DrawImage(bmp, 0, 0, 1000, bmp.Height);
+            }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+            printPreviewDialog.ShowDialog();
         }
     }
 }
